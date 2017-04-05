@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -59,6 +61,11 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
         //控制绘制时长
         mChart.animateX(2500);
 
+        //是否绘制图例
+        Legend legend = mChart.getLegend();
+//        legend.setEnabled(false);
+        legend.setPosition(Legend.LegendPosition.ABOVE_CHART_RIGHT);
+
         //设置X轴
         XAxis xAxis = mChart.getXAxis();
         xAxis.setEnabled(true);
@@ -84,6 +91,11 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
         leftAxis.setDrawAxisLine(true);
         leftAxis.setGranularityEnabled(true);
         leftAxis.setLabelCount(6, true);
+        //添加限制线
+        LimitLine yLimitLine = new LimitLine(0,"");
+        yLimitLine.setLineColor(Color.RED);
+//        yLimitLine.setTextColor(Color.RED);
+        leftAxis.addLimitLine(yLimitLine);
 
         //右侧Y轴是一直存在的,所以要通过这个方法隐去
         YAxis rightAxis = mChart.getAxisRight();
@@ -131,23 +143,14 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
             mChart.getData().notifyDataChanged();
             mChart.notifyDataSetChanged();
         } else {
-            // create a dataset and give it a type
-            set1 = new LineDataSet(yVals1, "DataSet 1");
-//            set1.setAxisDependency(YAxis.AxisDependency.LEFT);
+            set1 = new LineDataSet(yVals1, "左");
             set1.setColor(ColorTemplate.getHoloBlue());
             set1.setLineWidth(2f);
-//            set1.setFillAlpha(65);
-//            set1.setFillColor(ColorTemplate.getHoloBlue());
 
-            // create a dataset and give it a type
-            set2 = new LineDataSet(yVals2, "DataSet 2");
-//            set2.setAxisDependency(YAxis.AxisDependency.RIGHT);
+            set2 = new LineDataSet(yVals2, "右");
             set2.setColor(Color.RED);
             set2.setLineWidth(2f);
-//            set2.setFillAlpha(65);
-//            set2.setFillColor(Color.RED);
 
-            // create a data object with the datasets
             LineData data = new LineData(set1, set2);
             data.setValueTextColor(Color.WHITE);
             data.setValueTextSize(9f);
