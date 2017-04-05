@@ -1,24 +1,17 @@
 package com.zmm.mpandroidchartdemo;
 
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.WindowManager;
-import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
@@ -81,16 +74,16 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
 
 
         //设置Y轴
-        YAxis leftAxis = mChart.getAxisLeft();
-        leftAxis.setEnabled(true);
-        leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
-        leftAxis.setTextColor(Color.RED);
-        leftAxis.setAxisMinimum(0);
-        leftAxis.setAxisMaximum(100);
-        leftAxis.setDrawGridLines(true);
-        leftAxis.setDrawAxisLine(true);
-        leftAxis.setGranularityEnabled(true);
-        leftAxis.setLabelCount(6, false);
+        YAxis yAxis = mChart.getAxisLeft();
+        yAxis.setEnabled(true);
+        yAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
+        yAxis.setTextColor(Color.RED);
+        yAxis.setAxisMinimum(0);
+        yAxis.setAxisMaximum(100);
+        yAxis.setDrawGridLines(true);
+        yAxis.setDrawAxisLine(true);
+        yAxis.setGranularityEnabled(true);
+        yAxis.setLabelCount(6, false);
 
 
         //---------------------------
@@ -123,42 +116,17 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
             float mult = range;
             float val = (float) (Math.random() * mult) + 450;
             yVals2.add(new Entry(i, val));
-//            if(i == 10) {
-//                yVals2.add(new Entry(i, val + 50));
-//            }
         }
 
-        ArrayList<Entry> yVals3 = new ArrayList<Entry>();
-
-        for (int i = 0; i < count; i++) {
-            float mult = range;
-            float val = (float) (Math.random() * mult) + 500;
-            yVals3.add(new Entry(i, val));
-        }
-
-        LineDataSet set1, set2, set3;
+        LineDataSet set1, set2;
 
 
         if (mChart.getData() != null &&
                 mChart.getData().getDataSetCount() > 0) {
             set1 = (LineDataSet) mChart.getData().getDataSetByIndex(0);
             set2 = (LineDataSet) mChart.getData().getDataSetByIndex(1);
-            set3 = (LineDataSet) mChart.getData().getDataSetByIndex(2);
             set1.setValues(yVals1);
             set2.setValues(yVals2);
-            set3.setValues(yVals3);
-
-//            set1.setDrawCircles(false);
-//            set1.setDrawValues(false);
-//            set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-//
-//            set2.setDrawCircles(false);
-//            set2.setDrawValues(false);
-//            set2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-//
-//            set3.setDrawCircles(false);
-//            set3.setDrawValues(false);
-//            set3.setMode(LineDataSet.Mode.CUBIC_BEZIER);
 
             mChart.getData().notifyDataChanged();
             mChart.notifyDataSetChanged();
@@ -175,10 +143,6 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
             set1.setFillColor(ColorTemplate.getHoloBlue());
             set1.setHighLightColor(Color.rgb(244, 117, 117));
             set1.setDrawCircleHole(false);
-            //set1.setFillFormatter(new MyFillFormatter(0f));
-            //set1.setDrawHorizontalHighlightIndicator(false);
-            //set1.setVisible(false);
-            //set1.setCircleHoleColor(Color.WHITE);
 
             // create a dataset and give it a type
             set2 = new LineDataSet(yVals2, "DataSet 2");
@@ -191,21 +155,9 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
             set2.setFillColor(Color.RED);
             set2.setDrawCircleHole(false);
             set2.setHighLightColor(Color.rgb(244, 117, 117));
-            //set2.setFillFormatter(new MyFillFormatter(900f));
-
-            set3 = new LineDataSet(yVals3, "DataSet 3");
-            set3.setAxisDependency(YAxis.AxisDependency.RIGHT);
-            set3.setColor(Color.YELLOW);
-            set3.setCircleColor(Color.WHITE);
-            set3.setLineWidth(2f);
-            set3.setCircleRadius(3f);
-            set3.setFillAlpha(65);
-            set3.setFillColor(ColorTemplate.colorWithAlpha(Color.YELLOW, 200));
-            set3.setDrawCircleHole(false);
-            set3.setHighLightColor(Color.rgb(244, 117, 117));
 
             // create a data object with the datasets
-            LineData data = new LineData(set1, set2, set3);
+            LineData data = new LineData(set1, set2);
             data.setValueTextColor(Color.WHITE);
             data.setValueTextSize(9f);
 
