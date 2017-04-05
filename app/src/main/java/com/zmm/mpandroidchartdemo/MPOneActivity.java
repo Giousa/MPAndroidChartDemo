@@ -74,17 +74,20 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
 
 
         //设置Y轴
-        YAxis yAxis = mChart.getAxisLeft();
-        yAxis.setEnabled(true);
-        yAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
-        yAxis.setTextColor(Color.RED);
-        yAxis.setAxisMinimum(0);
-        yAxis.setAxisMaximum(100);
-        yAxis.setDrawGridLines(true);
-        yAxis.setDrawAxisLine(true);
-        yAxis.setGranularityEnabled(true);
-        yAxis.setLabelCount(6, false);
+        YAxis leftAxis = mChart.getAxisLeft();
+        leftAxis.setEnabled(true);
+        leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
+        leftAxis.setTextColor(Color.RED);
+        leftAxis.setAxisMinimum(0);
+        leftAxis.setAxisMaximum(100);
+        leftAxis.setDrawGridLines(true);
+        leftAxis.setDrawAxisLine(true);
+        leftAxis.setGranularityEnabled(true);
+        leftAxis.setLabelCount(6, true);
 
+        //右侧Y轴是一直存在的,所以要通过这个方法隐去
+        YAxis rightAxis = mChart.getAxisRight();
+        rightAxis.setEnabled(false);
 
         //---------------------------
         List<ILineDataSet> sets = mChart.getData().getDataSets();
@@ -114,12 +117,11 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
 
         for (int i = 0; i < count-1; i++) {
             float mult = range;
-            float val = (float) (Math.random() * mult) + 450;
+            float val = (float) (Math.random() * mult) + 10;
             yVals2.add(new Entry(i, val));
         }
 
         LineDataSet set1, set2;
-
 
         if (mChart.getData() != null &&
                 mChart.getData().getDataSetCount() > 0) {
@@ -133,28 +135,19 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
         } else {
             // create a dataset and give it a type
             set1 = new LineDataSet(yVals1, "DataSet 1");
-
             set1.setAxisDependency(YAxis.AxisDependency.LEFT);
             set1.setColor(ColorTemplate.getHoloBlue());
-            set1.setCircleColor(Color.WHITE);
-            set1.setLineWidth(2f);
-            set1.setCircleRadius(3f);
+            set1.setLineWidth(1f);
             set1.setFillAlpha(65);
             set1.setFillColor(ColorTemplate.getHoloBlue());
-            set1.setHighLightColor(Color.rgb(244, 117, 117));
-            set1.setDrawCircleHole(false);
 
             // create a dataset and give it a type
             set2 = new LineDataSet(yVals2, "DataSet 2");
             set2.setAxisDependency(YAxis.AxisDependency.RIGHT);
             set2.setColor(Color.RED);
-            set2.setCircleColor(Color.WHITE);
             set2.setLineWidth(2f);
-            set2.setCircleRadius(3f);
             set2.setFillAlpha(65);
             set2.setFillColor(Color.RED);
-            set2.setDrawCircleHole(false);
-            set2.setHighLightColor(Color.rgb(244, 117, 117));
 
             // create a data object with the datasets
             LineData data = new LineData(set1, set2);
