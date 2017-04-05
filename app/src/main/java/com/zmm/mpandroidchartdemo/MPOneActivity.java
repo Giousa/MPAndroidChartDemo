@@ -11,12 +11,14 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
@@ -34,16 +36,12 @@ import java.util.List;
 
 public class MPOneActivity extends AppCompatActivity implements OnChartValueSelectedListener {
 
-    protected Typeface mTfLight;
-
     private LineChart mChart;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mp_one);
-//        mTfLight = Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf");
-
         initView();
 
     }
@@ -53,68 +51,47 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
         mChart = (LineChart) findViewById(R.id.chart1);
         mChart.setOnChartValueSelectedListener(this);
 
-        // no description text
+        // 控制是否显示右下角文字描述
         mChart.getDescription().setEnabled(false);
 
         //禁止触摸滑动
         mChart.setTouchEnabled(false);
 
-        mChart.setDragDecelerationFrictionCoef(0.9f);
-
-        // enable scaling and dragging
-        mChart.setDragEnabled(true);
-        mChart.setScaleEnabled(true);
-        mChart.setDrawGridBackground(false);
-        mChart.setHighlightPerDragEnabled(true);
-
-        // if disabled, scaling can be done on x- and y-axis separately
-        mChart.setPinchZoom(true);
-
         //背景颜色
         mChart.setBackgroundColor(Color.WHITE);
 
-        // add data
-        setData(40, 90);
+        // 添加数据
+        setData(60, 90);
 
+        //控制绘制时长
         mChart.animateX(2500);
 
-        // get the legend (only possible after setting data)
-        Legend l = mChart.getLegend();
-
-        // modify the legend ...
-        l.setForm(Legend.LegendForm.LINE);
-        l.setTypeface(mTfLight);
-        l.setTextSize(11f);
-        l.setTextColor(Color.WHITE);
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
-        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
-        l.setDrawInside(false);
-//        l.setYOffset(11f);
-
+        //设置X轴
         XAxis xAxis = mChart.getXAxis();
-        xAxis.setTypeface(mTfLight);
-        xAxis.setTextSize(11f);
-        xAxis.setTextColor(Color.WHITE);
-        xAxis.setDrawGridLines(false);
-        xAxis.setDrawAxisLine(false);
+        xAxis.setEnabled(true);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextSize(15f);
+        xAxis.setTextColor(Color.GREEN);
+        xAxis.setDrawGridLines(true);
+        xAxis.setDrawAxisLine(true);
+        xAxis.setAxisMinimum(0);
+        xAxis.setAxisMaximum(60);
+//        xAxis.setLabelCount(10);
+        xAxis.setLabelCount(10,false);
 
+
+        //设置Y轴
         YAxis leftAxis = mChart.getAxisLeft();
-        leftAxis.setTypeface(mTfLight);
-        leftAxis.setTextColor(ColorTemplate.getHoloBlue());
-        leftAxis.setAxisMaximum(200f);
-        leftAxis.setAxisMinimum(0f);
+        leftAxis.setEnabled(true);
+        leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
+        leftAxis.setTextColor(Color.RED);
+        leftAxis.setAxisMinimum(0);
+        leftAxis.setAxisMaximum(100);
         leftAxis.setDrawGridLines(true);
+        leftAxis.setDrawAxisLine(true);
         leftAxis.setGranularityEnabled(true);
+        leftAxis.setLabelCount(6, false);
 
-        YAxis rightAxis = mChart.getAxisRight();
-        rightAxis.setTypeface(mTfLight);
-        rightAxis.setTextColor(Color.RED);
-        rightAxis.setAxisMaximum(900);
-        rightAxis.setAxisMinimum(-200);
-        rightAxis.setDrawGridLines(false);
-        rightAxis.setDrawZeroLine(false);
-        rightAxis.setGranularityEnabled(false);
 
         //---------------------------
         List<ILineDataSet> sets = mChart.getData().getDataSets();
@@ -124,8 +101,8 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
             LineDataSet set = (LineDataSet) iSet;
             set.setDrawValues(false);
             set.setDrawCircles(false);
-//            set.setMode(LineDataSet.Mode.LINEAR);
-            set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+//            set.setMode(LineDataSet.Mode.LINEAR);//直线
+            set.setMode(LineDataSet.Mode.CUBIC_BEZIER);//弧线
         }
         //---------------------------
     }
