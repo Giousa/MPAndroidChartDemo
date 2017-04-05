@@ -54,7 +54,7 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
         mChart.setBackgroundColor(Color.WHITE);
 
         // 添加数据
-        setData(60, 90);
+        setData(60, 60);
 
         //控制绘制时长
         mChart.animateX(2500);
@@ -78,8 +78,8 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
         leftAxis.setEnabled(true);
         leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
         leftAxis.setTextColor(Color.RED);
-        leftAxis.setAxisMinimum(0);
-        leftAxis.setAxisMaximum(100);
+        leftAxis.setAxisMinimum(-40);
+        leftAxis.setAxisMaximum(60);
         leftAxis.setDrawGridLines(true);
         leftAxis.setDrawAxisLine(true);
         leftAxis.setGranularityEnabled(true);
@@ -108,8 +108,8 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
 
         for (int i = 0; i < count; i++) {
-            float mult = range / 2f;
-            float val = (float) (Math.random() * mult) + 50;
+            float mult = range / 1.5f;
+            float val = (float) (Math.random() * mult);
             yVals1.add(new Entry(i, val));
         }
 
@@ -117,7 +117,7 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
 
         for (int i = 0; i < count-1; i++) {
             float mult = range;
-            float val = (float) (Math.random() * mult) + 10;
+            float val = (float) (Math.random() * mult);
             yVals2.add(new Entry(i, val));
         }
 
@@ -137,7 +137,7 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
             set1 = new LineDataSet(yVals1, "DataSet 1");
             set1.setAxisDependency(YAxis.AxisDependency.LEFT);
             set1.setColor(ColorTemplate.getHoloBlue());
-            set1.setLineWidth(1f);
+            set1.setLineWidth(2f);
             set1.setFillAlpha(65);
             set1.setFillColor(ColorTemplate.getHoloBlue());
 
