@@ -54,7 +54,7 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
         mChart.setBackgroundColor(Color.WHITE);
 
         // 添加数据
-        setData(60, 60);
+        setData(60, 80);
 
         //控制绘制时长
         mChart.animateX(2500);
@@ -105,19 +105,17 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
 
     private void setData(int count, float range) {
 
-        ArrayList<Entry> yVals1 = new ArrayList<Entry>();
+        ArrayList<Entry> yVals1 = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            float mult = range / 1.5f;
-            float val = (float) (Math.random() * mult);
+            float val = (float) (Math.random() * range)-30;
             yVals1.add(new Entry(i, val));
         }
 
-        ArrayList<Entry> yVals2 = new ArrayList<Entry>();
+        ArrayList<Entry> yVals2 = new ArrayList<>();
 
         for (int i = 0; i < count-1; i++) {
-            float mult = range;
-            float val = (float) (Math.random() * mult);
+            float val = (float) (Math.random() * range)-30;
             yVals2.add(new Entry(i, val));
         }
 
@@ -135,19 +133,19 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
         } else {
             // create a dataset and give it a type
             set1 = new LineDataSet(yVals1, "DataSet 1");
-            set1.setAxisDependency(YAxis.AxisDependency.LEFT);
+//            set1.setAxisDependency(YAxis.AxisDependency.LEFT);
             set1.setColor(ColorTemplate.getHoloBlue());
             set1.setLineWidth(2f);
-            set1.setFillAlpha(65);
-            set1.setFillColor(ColorTemplate.getHoloBlue());
+//            set1.setFillAlpha(65);
+//            set1.setFillColor(ColorTemplate.getHoloBlue());
 
             // create a dataset and give it a type
             set2 = new LineDataSet(yVals2, "DataSet 2");
-            set2.setAxisDependency(YAxis.AxisDependency.RIGHT);
+//            set2.setAxisDependency(YAxis.AxisDependency.RIGHT);
             set2.setColor(Color.RED);
             set2.setLineWidth(2f);
-            set2.setFillAlpha(65);
-            set2.setFillColor(Color.RED);
+//            set2.setFillAlpha(65);
+//            set2.setFillColor(Color.RED);
 
             // create a data object with the datasets
             LineData data = new LineData(set1, set2);
