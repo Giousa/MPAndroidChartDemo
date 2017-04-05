@@ -63,37 +63,34 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
 
         //是否绘制图例
         Legend legend = mChart.getLegend();
-//        legend.setEnabled(false);
-        legend.setPosition(Legend.LegendPosition.ABOVE_CHART_RIGHT);
+        legend.setEnabled(false);
+//        legend.setPosition(Legend.LegendPosition.ABOVE_CHART_RIGHT);
 
         //设置X轴
         XAxis xAxis = mChart.getXAxis();
-        xAxis.setEnabled(true);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextSize(15f);
+        xAxis.setEnabled(true);//是否绘制轴
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);// 设置X轴的位置
+        xAxis.setTextSize(20f);
         xAxis.setTextColor(Color.GREEN);
-        xAxis.setDrawGridLines(true);
-        xAxis.setDrawAxisLine(true);
         xAxis.setAxisMinimum(0);
         xAxis.setAxisMaximum(60);
-//        xAxis.setLabelCount(10);
         xAxis.setLabelCount(10,false);
-
+        xAxis.setAxisLineWidth(2f);//设置X轴的宽度
 
         //设置Y轴
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setEnabled(true);
         leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
-        leftAxis.setTextColor(Color.RED);
+        leftAxis.setTextSize(20f);
+        leftAxis.setTextColor(Color.BLACK);
         leftAxis.setAxisMinimum(-40);
         leftAxis.setAxisMaximum(60);
-        leftAxis.setDrawGridLines(true);
-        leftAxis.setDrawAxisLine(true);
-        leftAxis.setGranularityEnabled(true);
         leftAxis.setLabelCount(6, true);
+        leftAxis.setAxisLineWidth(2f);
+
         //添加限制线
         LimitLine yLimitLine = new LimitLine(0,"");
-        yLimitLine.setLineColor(Color.RED);
+        yLimitLine.setLineColor(Color.BLACK);
 //        yLimitLine.setTextColor(Color.RED);
         leftAxis.addLimitLine(yLimitLine);
 
