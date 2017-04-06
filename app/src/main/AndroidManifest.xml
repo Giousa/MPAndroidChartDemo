@@ -21,6 +21,8 @@
         <activity android:name=".act.MPTwoActivity"/>
 
         <activity android:name=".act.CustomOneActivity"/>
+
+        <activity android:name=".act.FastJsonActivity"/>
     </application>
 
 </manifest>

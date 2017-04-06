@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.zmm.mpandroidchartdemo.act.CustomOneActivity;
+import com.zmm.mpandroidchartdemo.act.FastJsonActivity;
 import com.zmm.mpandroidchartdemo.act.MPOneActivity;
 import com.zmm.mpandroidchartdemo.act.MPTwoActivity;
 
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent3);
                 break;
             case R.id.btn_04:
+                Intent intent4 = new Intent(MainActivity.this,FastJsonActivity.class);
+                startActivity(intent4);
                 break;
         }
     }

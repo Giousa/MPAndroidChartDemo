@@ -28,4 +28,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     compile 'com.jakewharton:butterknife:5.1.1'
+    compile 'com.alibaba:fastjson:1.2.31'
+    compile 'com.alibaba:fastjson:1.1.56.android'
 }
