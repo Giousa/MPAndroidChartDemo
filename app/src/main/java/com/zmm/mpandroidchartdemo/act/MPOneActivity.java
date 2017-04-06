@@ -78,6 +78,22 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
         xAxis.setLabelCount(10,false);
         xAxis.setAxisLineWidth(2f);//设置X轴的宽度
 
+        //限制线+渐变线
+        LimitLine xLimitLine = new LimitLine(5,"");
+        xLimitLine.setLineColor(Color.RED);
+        xLimitLine.enableDashedLine(10f,10f,0);
+        xAxis.addLimitLine(xLimitLine);
+
+        LimitLine xLimitLine2 = new LimitLine(15,"");
+        xLimitLine2.setLineColor(Color.RED);
+        xLimitLine2.enableDashedLine(10f,10f,0);
+        xAxis.addLimitLine(xLimitLine2);
+
+        LimitLine xLimitLine3 = new LimitLine(25,"");
+        xLimitLine3.setLineColor(Color.RED);
+        xLimitLine3.enableDashedLine(10f,10f,0);
+        xAxis.addLimitLine(xLimitLine3);
+
         //设置Y轴
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setEnabled(true);
@@ -146,7 +162,7 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
             set1.setLineWidth(2f);
 
             set2 = new LineDataSet(yVals2, "右");
-            set2.setColor(Color.RED);
+            set2.setColor(Color.YELLOW);
             set2.setLineWidth(2f);
 
             LineData data = new LineData(set1, set2);
