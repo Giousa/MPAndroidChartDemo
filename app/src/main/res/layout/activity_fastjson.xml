@@ -6,19 +6,19 @@
 
     <Button
         android:id="@+id/btn_01"
-        android:text="fastjson解析"
+        android:text="fastjson解析1"
         android:layout_width="300px"
         android:layout_height="300px"/>
 
     <Button
         android:id="@+id/btn_02"
-        android:text="fastjson解析"
+        android:text="fastjson解析2"
         android:layout_width="300px"
         android:layout_height="300px"/>
 
     <Button
         android:id="@+id/btn_03"
-        android:text="fastjson解析"
+        android:text="fastjson解析3"
         android:layout_width="300px"
         android:layout_height="300px"/>
 
