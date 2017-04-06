@@ -44,7 +44,7 @@ public class CustomTwoActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        JSONObject jsonObject = JSON.parseObject(ChartJson.CHARTJSON01);
+        JSONObject jsonObject = JSON.parseObject(ChartJson.CHARTJSON02);
         JSONArray line1 = jsonObject.getJSONArray("line1");
         Log.d(TAG,line1.toString());
         JSONArray line2 = jsonObject.getJSONArray("line2");
@@ -72,8 +72,8 @@ public class CustomTwoActivity extends AppCompatActivity {
         mCustomLineView.setxAxisMin(0);
         mCustomLineView.setxAxisMax(60);
         mCustomLineView.setyAxisCount(5);
-        mCustomLineView.setyAxisMin(0);
-        mCustomLineView.setyAxisMax(100);
+        mCustomLineView.setyAxisMin(-30);
+        mCustomLineView.setyAxisMax(50);
         mCustomLineView.setChartData(yVals1,yVals2);
         mCustomLineView.initChartData();
     }
