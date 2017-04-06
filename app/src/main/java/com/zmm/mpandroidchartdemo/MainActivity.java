@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.zmm.mpandroidchartdemo.act.CustomOneActivity;
+import com.zmm.mpandroidchartdemo.act.CustomTwoActivity;
 import com.zmm.mpandroidchartdemo.act.FastJsonActivity;
 import com.zmm.mpandroidchartdemo.act.MPOneActivity;
 import com.zmm.mpandroidchartdemo.act.MPTwoActivity;
@@ -23,24 +24,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.btn_01, R.id.btn_02, R.id.btn_03, R.id.btn_04})
+    @OnClick({R.id.btn_01, R.id.btn_02, R.id.btn_03, R.id.btn_04,R.id.btn_05})
     public void onClick(View view) {
+
+        Intent intent;
+
         switch (view.getId()) {
             case R.id.btn_01:
-                Intent intent1 = new Intent(MainActivity.this,MPOneActivity.class);
-                startActivity(intent1);
+                intent = new Intent(MainActivity.this,MPOneActivity.class);
+                startActivity(intent);
                 break;
             case R.id.btn_02:
-                Intent intent2 = new Intent(MainActivity.this,MPTwoActivity.class);
-                startActivity(intent2);
+                intent = new Intent(MainActivity.this,MPTwoActivity.class);
+                startActivity(intent);
                 break;
             case R.id.btn_03:
-                Intent intent3 = new Intent(MainActivity.this,CustomOneActivity.class);
-                startActivity(intent3);
+                intent = new Intent(MainActivity.this,CustomOneActivity.class);
+                startActivity(intent);
                 break;
             case R.id.btn_04:
-                Intent intent4 = new Intent(MainActivity.this,FastJsonActivity.class);
-                startActivity(intent4);
+                intent = new Intent(MainActivity.this, CustomTwoActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_05:
+                intent = new Intent(MainActivity.this,FastJsonActivity.class);
+                startActivity(intent);
                 break;
         }
     }

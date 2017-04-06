@@ -2,6 +2,7 @@ package com.zmm.mpandroidchartdemo.view;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -129,6 +130,36 @@ public class CustomLineView extends RelativeLayout {
             float val = (float) (Math.random() * range) - 30;
             yVals2.add(new Entry(i, val));
         }
+
+        LineDataSet set1, set2;
+
+        if (mChart.getData() != null &&
+                mChart.getData().getDataSetCount() > 0) {
+            set1 = (LineDataSet) mChart.getData().getDataSetByIndex(0);
+            set2 = (LineDataSet) mChart.getData().getDataSetByIndex(1);
+            set1.setValues(yVals1);
+            set2.setValues(yVals2);
+
+            mChart.getData().notifyDataChanged();
+            mChart.notifyDataSetChanged();
+        } else {
+            set1 = new LineDataSet(yVals1, "左");
+            set1.setColor(ColorTemplate.getHoloBlue());
+            set1.setLineWidth(2f);
+
+            set2 = new LineDataSet(yVals2, "右");
+            set2.setColor(Color.RED);
+            set2.setLineWidth(2f);
+
+            LineData data = new LineData(set1, set2);
+            data.setValueTextColor(Color.WHITE);
+            data.setValueTextSize(9f);
+
+            mChart.setData(data);
+        }
+    }
+
+    public void setChartData(ArrayList<Entry> yVals1, ArrayList<Entry> yVals2) {
 
         LineDataSet set1, set2;
 
