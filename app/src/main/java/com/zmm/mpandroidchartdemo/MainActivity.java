@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.zmm.mpandroidchartdemo.act.CustomOneActivity;
+import com.zmm.mpandroidchartdemo.act.MPOneActivity;
+import com.zmm.mpandroidchartdemo.act.MPTwoActivity;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -30,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
             case R.id.btn_03:
+                Intent intent3 = new Intent(MainActivity.this,CustomOneActivity.class);
+                startActivity(intent3);
                 break;
             case R.id.btn_04:
                 break;

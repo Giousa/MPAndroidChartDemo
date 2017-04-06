@@ -3,6 +3,9 @@ package com.zmm.mpandroidchartdemo.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.RelativeLayout;
+
+import com.zmm.mpandroidchartdemo.R;
 
 /**
  * Description:
@@ -11,7 +14,7 @@ import android.view.View;
  * Time:下午5:41
  */
 
-public class CustomLineView extends View {
+public class CustomLineView extends RelativeLayout {
     
     public CustomLineView(Context context) {
         this(context,null);
@@ -27,6 +30,7 @@ public class CustomLineView extends View {
     }
 
     private void initView() {
+        View view = View.inflate(getContext(), R.layout.custom_lineview, this);
 
     }
 }

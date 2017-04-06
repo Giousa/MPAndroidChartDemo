@@ -1,4 +1,4 @@
-package com.zmm.mpandroidchartdemo;
+package com.zmm.mpandroidchartdemo.act;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -22,6 +22,7 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.zmm.mpandroidchartdemo.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

@@ -16,9 +16,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MPOneActivity"/>
+        <activity android:name=".act.MPOneActivity"/>
 
-        <activity android:name=".MPTwoActivity"/>
+        <activity android:name=".act.MPTwoActivity"/>
+
+        <activity android:name=".act.CustomOneActivity"/>
     </application>
 
 </manifest>
