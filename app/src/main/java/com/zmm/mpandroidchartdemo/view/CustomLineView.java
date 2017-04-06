@@ -70,7 +70,6 @@ public class CustomLineView extends RelativeLayout {
         mChart.getDescription().setEnabled(false);
         mChart.setTouchEnabled(false);
         mChart.setBackgroundColor(Color.WHITE);
-        setData(xAxisMax, 80);
         mChart.animateX(2500);
         Legend legend = mChart.getLegend();
         legend.setEnabled(false);
@@ -112,7 +111,10 @@ public class CustomLineView extends RelativeLayout {
         }
     }
 
-    private void setData(int count, float range) {
+    public void setData() {
+
+        int count = xAxisMax;
+        int range = 80;
 
         ArrayList<Entry> yVals1 = new ArrayList<>();
 
@@ -152,7 +154,6 @@ public class CustomLineView extends RelativeLayout {
             data.setValueTextColor(Color.WHITE);
             data.setValueTextSize(9f);
 
-            // set data
             mChart.setData(data);
         }
     }
@@ -192,9 +193,5 @@ public class CustomLineView extends RelativeLayout {
     public void setyAxisCount(int yAxisCount) {
         this.yAxisCount = yAxisCount;
 
-    }
-
-    public void setInteger(boolean integer) {
-        isInteger = integer;
     }
 }

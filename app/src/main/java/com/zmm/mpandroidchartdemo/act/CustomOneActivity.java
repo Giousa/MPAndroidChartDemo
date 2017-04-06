@@ -40,6 +40,7 @@ public class CustomOneActivity extends AppCompatActivity {
         mCustomLineView.setyAxisCount(5);
         mCustomLineView.setyAxisMin(-40);
         mCustomLineView.setyAxisMax(60);
+        mCustomLineView.setData();
         mCustomLineView.initChartData();
     }
 }
