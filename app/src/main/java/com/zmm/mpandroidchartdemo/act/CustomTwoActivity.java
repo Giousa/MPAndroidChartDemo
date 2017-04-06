@@ -67,7 +67,7 @@ public class CustomTwoActivity extends AppCompatActivity {
     private void initView() {
         mCustomLineView.setTitle("二个标题");
         mCustomLineView.setUnit("翻角");
-        mCustomLineView.setLeftPic(R.drawable.bg_view_left_pic);
+        mCustomLineView.setLeftPic(R.drawable.chart_left_pic);
         mCustomLineView.setxAxisCount(6);
         mCustomLineView.setxAxisMin(0);
         mCustomLineView.setxAxisMax(60);

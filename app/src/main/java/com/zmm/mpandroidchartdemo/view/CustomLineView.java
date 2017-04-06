@@ -2,7 +2,6 @@ package com.zmm.mpandroidchartdemo.view;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -59,7 +58,7 @@ public class CustomLineView extends RelativeLayout {
     }
 
     private void initView() {
-        View view = View.inflate(getContext(), R.layout.custom_lineview, this);
+        View view = View.inflate(getContext(), R.layout.item_chart_custom, this);
         mChartTitle = (TextView) view.findViewById(R.id.chart_tv_title);
         mChartUnit = (TextView) view.findViewById(R.id.chart_tv_unit);
         mChartLeft = (ImageView) view.findViewById(R.id.chart_iv_left_pic);
