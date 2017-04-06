@@ -31,8 +31,15 @@ public class CustomOneActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mCustomLineView.setTitle("这个是一个标题");
+        mCustomLineView.setTitle("一个标题");
         mCustomLineView.setUnit("角度");
         mCustomLineView.setLeftPic(R.drawable.bg_view_left_pic);
+        mCustomLineView.setxAxisCount(6);
+        mCustomLineView.setxAxisMin(0);
+        mCustomLineView.setxAxisMax(70);
+        mCustomLineView.setyAxisCount(5);
+        mCustomLineView.setyAxisMin(-40);
+        mCustomLineView.setyAxisMax(60);
+        mCustomLineView.initChartData();
     }
 }

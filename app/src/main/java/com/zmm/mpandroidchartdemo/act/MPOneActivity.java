@@ -45,7 +45,7 @@ public class MPOneActivity extends AppCompatActivity implements OnChartValueSele
     private void initView() {
 
         mChart = (LineChart) findViewById(R.id.chart1);
-        mChart.setOnChartValueSelectedListener(this);
+        mChart.setOnChartValueSelectedListener(this);//图表选中监听
 
         // 控制是否显示右下角文字描述
         mChart.getDescription().setEnabled(false);
