@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.zmm.mpandroidchartdemo.act.CustomOneActivity;
+import com.zmm.mpandroidchartdemo.act.CustomThreeActivity;
 import com.zmm.mpandroidchartdemo.act.CustomTwoActivity;
 import com.zmm.mpandroidchartdemo.act.FastJsonActivity;
 import com.zmm.mpandroidchartdemo.act.MPOneActivity;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.btn_01, R.id.btn_02, R.id.btn_03, R.id.btn_04,R.id.btn_05})
+    @OnClick({R.id.btn_01, R.id.btn_02, R.id.btn_03, R.id.btn_04,R.id.btn_05,R.id.btn_06})
     public void onClick(View view) {
 
         Intent intent;
@@ -47,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.btn_05:
+                intent = new Intent(MainActivity.this,CustomThreeActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.btn_06:
                 intent = new Intent(MainActivity.this,FastJsonActivity.class);
                 startActivity(intent);
                 break;

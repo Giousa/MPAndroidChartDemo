@@ -26,6 +26,8 @@
 
         <activity android:name=".act.CustomTwoActivity"/>
 
+        <activity android:name=".act.CustomThreeActivity"/>
+
         <activity android:name=".act.FastJsonActivity"/>
     </application>
 

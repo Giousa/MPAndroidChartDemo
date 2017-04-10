@@ -3,6 +3,7 @@ package com.zmm.mpandroidchartdemo.view;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -16,12 +17,10 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.zmm.mpandroidchartdemo.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Description:
@@ -30,9 +29,9 @@ import java.util.List;
  * Time:下午5:41a
  */
 
-public class CustomLineView extends RelativeLayout {
+public class CustomLineView2 extends RelativeLayout {
 
-    private static final String TAG = CustomLineView.class.getSimpleName();
+    private static final String TAG = CustomLineView2.class.getSimpleName();
 
     private TextView mChartTitle;
     private TextView mChartUnit;
@@ -46,15 +45,15 @@ public class CustomLineView extends RelativeLayout {
     private int yAxisCount = 6;
     private boolean isInteger = false;
 
-    public CustomLineView(Context context) {
+    public CustomLineView2(Context context) {
         this(context, null);
     }
 
-    public CustomLineView(Context context, AttributeSet attrs) {
+    public CustomLineView2(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CustomLineView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CustomLineView2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
     }
@@ -102,15 +101,15 @@ public class CustomLineView extends RelativeLayout {
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setEnabled(false);
 
-        List<ILineDataSet> sets = mChart.getData().getDataSets();
-
-        for (ILineDataSet iSet : sets) {
-
-            LineDataSet set = (LineDataSet) iSet;
-            set.setDrawValues(false);
-            set.setDrawCircles(false);
-            set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-        }
+//        List<ILineDataSet> sets = mChart.getData().getDataSets();
+//
+//        for (ILineDataSet iSet : sets) {
+//
+//            LineDataSet set = (LineDataSet) iSet;
+//            set.setDrawValues(false);
+//            set.setDrawCircles(false);
+//            set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+//        }
     }
 
     public void setData() {
@@ -140,6 +139,14 @@ public class CustomLineView extends RelativeLayout {
             set2 = (LineDataSet) mChart.getData().getDataSetByIndex(1);
             set1.setValues(yVals1);
             set2.setValues(yVals2);
+
+//            set1.setDrawValues(false);
+//            set1.setDrawCircles(false);
+//            set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+//
+//            set2.setDrawValues(false);
+//            set2.setDrawCircles(false);
+//            set2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
 
             mChart.getData().notifyDataChanged();
             mChart.notifyDataSetChanged();
@@ -173,6 +180,7 @@ public class CustomLineView extends RelativeLayout {
 
             mChart.getData().notifyDataChanged();
             mChart.notifyDataSetChanged();
+            mChart.invalidate();
         } else {
             set1 = new LineDataSet(yVals1, "左");
             set1.setColor(ColorTemplate.getHoloBlue());
@@ -182,11 +190,21 @@ public class CustomLineView extends RelativeLayout {
             set2.setColor(Color.RED);
             set2.setLineWidth(2f);
 
+            set1.setDrawValues(false);
+            set1.setDrawCircles(false);
+            set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+
+            set2.setDrawValues(false);
+            set2.setDrawCircles(false);
+            set2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+
             LineData data = new LineData(set1, set2);
             data.setValueTextColor(Color.WHITE);
             data.setValueTextSize(9f);
 
             mChart.setData(data);
+            mChart.notifyDataSetChanged(); // let the chart know it's data changed
+            mChart.invalidate();
         }
     }
 

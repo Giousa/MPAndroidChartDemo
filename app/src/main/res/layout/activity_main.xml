@@ -36,6 +36,12 @@
         android:id="@+id/btn_05"
         android:layout_width="300px"
         android:layout_height="300px"
+        android:text="Custom-Demo3"/>
+
+    <Button
+        android:id="@+id/btn_06"
+        android:layout_width="300px"
+        android:layout_height="300px"
         android:text="FastJson"/>
 
 </LinearLayout>
