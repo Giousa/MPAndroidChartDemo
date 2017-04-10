@@ -121,6 +121,7 @@ public class CustomThreeActivity extends AppCompatActivity {
         int y2 = mRandom.nextInt(50);
         count++;
         if(count >= 50){
+            stopTimer();
             return;
         }
 
@@ -135,7 +136,7 @@ public class CustomThreeActivity extends AppCompatActivity {
 
         for (int i = 0; i < yVals3.size(); i++) {
             Entry entry1 = yVals3.get(i);
-            Log.d(TAG,"entry1 "+entry1.getY());
+            Log.d(TAG,"entry1 x = "+entry1.getX()+",y = "+entry1.getY());
         }
 
         Log.d(TAG,"-------------");
